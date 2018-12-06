@@ -13,3 +13,6 @@ div {
     background-color: grey;
     height: 500px;
 }
+.guess_box {
+    height: 245px;
+}
