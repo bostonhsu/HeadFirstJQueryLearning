@@ -7,3 +7,7 @@ $(document).ready(function() {
     };
     $(".guess_box").click(checkForCode);
 });
+
+function getRandom(num) {
+    return Math.floor(Math.random() * num);
+}
