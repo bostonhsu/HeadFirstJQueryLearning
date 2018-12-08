@@ -125,4 +125,14 @@ $(document).ready(function () {
     $("#btnStick").click(function() {
         $("#hdrResult").html('Stick!');
     });
+    $("#btnRestart").click(function() {
+        $("#result").toggle();
+        $(this).toggle();
+        $("$my_hand").empty();
+        $("#hdrResult").html('');
+        used_cards.length = 0;
+        hand.cards.length = 0;
+        hand.current_total = 0;
+        $("#btnDeal").toggle().trigger('click');
+    })
 });
