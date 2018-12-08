@@ -4,56 +4,53 @@ $(document).ready(function(){
     lightning_two();
     lightning_three();
 
+	goLightning();
+	window.onblur = stopLightning;
+	window.onfocus = goLightning;
+	var int1, int2, int3;
+	function goLightning() {
+		int1 = setInterval(function() {
+			lightning_noe();
+		}, 4000);
+		int2 = setInterval(function() {
+			lightning_two();
+		}, 5000);
+		int3 = setInterval(function() {
+			lightning_three();
+		}, 7000);
+	}
+	function stopLightning() {
+		window.clearInterval(int1);
+		window.clearInterval(int2);
+		window.clearInterval(int3);
+	}
+
+	var clix = [0, 0, 0, 0];
     $("#head").click(function () {
-
-		if (headclix < 9) {
-			$("#head").animate({ left: "-=367px" }, 500);
-			headclix += 1;
-		}
-		else {
-			$("#head").animate({ left: "0px" }, 500);
-			headclix = 0;
-		}
-
+		moveMe(0, this);
 	});
-
 
 	$("#eyes").click(function () {
-
-		if (eyeclix < 9) {
-			$("#eyes").animate({ left: "-=367px" }, 500);
-			eyeclix += 1;
-		}
-		else {
-			$("#eyes").animate({ left: "0px" }, 500);
-			eyeclix = 0;
-		}
+		moveMe(1, this);
 	});
 
-
 	$("#nose").click(function () {
-		if (noseclix < 9) {
-			$("#nose").animate({ left: "-=367px" }, 500);
-			noseclix += 1;
-		}
-		else {
-			$("#nose").animate({ left: "0px" }, 500);
-			noseclix = 0;
-		}
+		moveMe(2, this);
 	});//end click
 
 	$("#mouth").click(function () {
-
-		if (mouthclix < 9) {
-			$("#mouth").animate({ left: "-=367px" }, 500);
-			mouthclix += 1;
-		}
-		else {
-			$("#mouth").animate({ left: "0px" }, 500);
-			mouthclix = 0;
-		}
-
+		moveMe(3, this);
 	});
+
+	function moveMe(i, obj) {
+		if (clix[i] < 9) {
+			$(obj).animate({left:"-=367px"}, 500);
+			clix[i] = clix[i] + 1;
+		} else {
+			clix[i] = 0;
+			$(obj).animate({left:"0px"}, 500);
+		}
+	}
 });//end doc.onready function
 
 function clickHandler() {
@@ -65,17 +62,14 @@ function clickHandler() {
     }
 }
 
-function lightning_noe(t) {
+function lightning_noe() {
     $("#container #lightning1").fadeIn(250).fadeOut(250);
-    setTimeout("lightning_one()", 4000);
 };
 
-function lightning_two(t) {
+function lightning_two() {
     $("#container #lightning2").fadeIn("fast").fadeOut("fast");
-    setTimeout("lightning_two()", 5000);
 };
 
-function lightning_three(t) {
+function lightning_three() {
     $("#container #lightning3").fadeIn("fast").fadeOut("fast");
-    setTimeout("lightning_three()", 7000);
 };
