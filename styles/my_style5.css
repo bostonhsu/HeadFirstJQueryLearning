@@ -18,3 +18,26 @@
     z-index: 1;
     overflow: hidden;
 }
+
+.face {
+    position: relative;
+    left: 0px;
+    top: 0px;
+    z-index: 0;
+}
+
+#head {
+    height: 172px;
+}
+
+#eyes {
+    height: 79px;
+}
+
+#nose {
+    height: 86px;
+}
+
+#mouth {
+    height: 117px;
+}
