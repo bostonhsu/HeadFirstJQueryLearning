@@ -59,6 +59,17 @@ $(document).ready(function () {
         new card('Queen', 'Spades', 10),
         new card('King', 'Spades', 10)
     ];
+    var hand = {
+        cards : new Array(),
+        current_total : 0,
+        sumCardTotal : function() {
+            this.current_total = 0;
+            for (var i = 0; i < this.cards.length; i++) {
+                this.current_total += this.cards[i].value;
+            }
+            $("#hdrTotal").html("Total: " + this.current_total);
+        }
+    };
     var used_cards = new Array();
     function deal() {
         for (var i = 0; i < 2; i++) {
