@@ -68,6 +68,18 @@ $(document).ready(function () {
                 this.current_total += this.cards[i].value;
             }
             $("#hdrTotal").html("Total: " + this.current_total);
+            if (this.current_total > 21) {
+                $("#btnStick").trigger("click");
+                $("#hdrResult").html("BUST!");
+            } else if (this.current_total == 21) {
+                $("#btnStick").trigger("click");
+                $("#hdrResult").html("BlackJack!");
+            } else if (this.current_total <= 21 && this.cards.length == 5) {
+                $("#btnStick").trigger("click");
+                $("hdrResult").html("5 card trick!");
+            } else {
+
+            }
         }
     };
     var used_cards = new Array();
@@ -99,9 +111,18 @@ $(document).ready(function () {
             }
         } while (!good_card);
         good_card = false;
+        hand.sumCardTotal();
     }
     $("#btnDeal").click(function() {
         deal();
         $(this).toggle();
+        $("#btnHit").toggle();
+        $("#btnStick").toggle();
+    });
+    $("#btnHit").click(function() {
+        hit();
+    });
+    $("#btnStick").click(function() {
+        $("#hdrResult").html('Stick!');
     });
 });
