@@ -51,6 +51,40 @@ $(document).ready(function(){
 			$(obj).animate({left:"0px"}, 500);
 		}
 	}
+
+	var w = 367;
+	var m = 10;
+
+	$("#btnRandom").click(randomize);
+	$("#btnReset").click(reset);
+
+	function getRandom(num) {
+		return Math.floor(Math.random() * num);
+	}
+
+	function reset() {
+		clix = [9, 9, 9, 9];
+		$(".face").each(function(index) {
+			moveMe(index, this);
+		});
+	}
+
+	function randomize() {
+		$(".face").each(function(index) {
+			var target_position = getRandom(m);
+			var current_position = clix[index];
+			clix[index] = target_position;
+			if (target_position > current_position) {
+				var move_to = (target_position - current_position) * w;
+				$(this).animate({left:"-="+move_to+"px"}, 500);
+			} else if (target_position < current_position) {
+				var move_to = (current_position - target_position) * w;
+				$(this).animate({left:"+="+move_to+"px"}, 500);
+			} else {
+
+			}
+		});
+	}
 });//end doc.onready function
 
 function clickHandler() {
