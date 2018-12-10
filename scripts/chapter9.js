@@ -18,6 +18,13 @@ $(document).ready(function(){
 			);
 		}
 	}
+
+	function getDBRacers() {
+		$.getJSON("service.php", function(json) {
+			alert(json.runners.length);
+		});
+		getTimeAjax();
+	}
 	
 	function getXMLRacers(){
 		$.ajax({
@@ -89,7 +96,7 @@ $(document).ready(function(){
 	$("#addRunner").submit(function() {
 		return false;
 	});
-	
+
 	showFrequency();
 	getXMLRacers();
 	startAJAXcalls();
