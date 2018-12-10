@@ -3,16 +3,16 @@
 	$result = db_connection($query);
 	$runners = array();
 
-	while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
+	while ($row = mysqli_fetch_array($result, MYSQL_ASSOC)) {
 		array_push($runners, array('fname' => $row['first_name'], 'lname' => $row['last_name'], 'gender' => $row['gender'], 'time' => $row['finish_time']));
 	}
-	echo json_decode(array("runners" => $runners));
+	echo json_encode(array("runners" => $runners));
 	exit;
 
 	function db_connection($query) {
-		mysql_connect('localhost', 'runner_db_user', 'runner_db_password') OR die ('Could not connect to database.');
-		mysql_select_db('hfjq_race_info');
-		return mysql_query($query);
+		$conn = mysqli_connect('localhost', 'runner_db_user', 'runner_db_password') OR die ('Could not connect to database.');
+		mysqli_select_db($conn, 'hfjq_race_info');
+		return mysqli_query($conn, $query);
 	}
 
 	function fail($message) {
