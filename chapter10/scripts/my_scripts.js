@@ -99,8 +99,6 @@ $(document).ready(function(){
 		change: refreshSwatch
 	});
 						
-	
-
 	$( "#red" ).slider( "value", 127 );
 	$( "#green" ).slider( "value", 127 );
 	$( "#blue" ).slider( "value", 127 );
